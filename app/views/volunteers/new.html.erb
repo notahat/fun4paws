@@ -10,11 +10,12 @@
 
   <fieldset>
     <legend>Contact details</legend>
-    <p><b>We need at least one phone number and an email address we can contact you on.</b></p>
+    <p><b>We need an email address and at least one phone number we can contact you on.</b></p>
+    <%= f.text_field_row :email_address %>
+    <div class="clear">
     <%= f.text_field_row :mobile_phone %>
     <%= f.text_field_row :home_phone %>
     <%= f.text_field_row :work_phone %>
-    <%= f.text_field_row :email_address %>
   </fieldset>
 
   <fieldset>
