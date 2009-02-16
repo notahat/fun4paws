@@ -2,7 +2,7 @@ class Volunteer < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   wraps_attribute :email_address, EmailAddress
   validates_presence_of :address_1, :suburb
-  validates_format_of :postcode, :with => /^A\d\d\d\d^Z/
+  validates_format_of :postcode, :with => /\A\d\d\d\d\Z/
   wraps_attribute :mobile_phone, PhoneNumber, :allow_blank => true
   wraps_attribute :home_phone,   PhoneNumber, :allow_blank => true
   wraps_attribute :work_phone,   PhoneNumber, :allow_blank => true
