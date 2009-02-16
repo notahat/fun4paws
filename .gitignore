@@ -1,3 +1,10 @@
 .DS_Store
 coverage
 .*.swp
+
+doc/contacts.txt
+doc/questions
+mail/*
+mail
+mail_list.txt-sorted
+system/
