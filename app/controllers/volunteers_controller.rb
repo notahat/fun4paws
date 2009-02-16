@@ -1,4 +1,6 @@
 class VolunteersController < ApplicationController
+  before_filter :authenticate, :except => [:new, :create]
+  
   # GET /volunteers
   # GET /volunteers.xml
   def index
