@@ -38,7 +38,7 @@
     <div class="clear"></div>
 	<%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
 	<%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
-	<div class="row">
+	<div class="row clear" style="width: 100%">
 	<%= f.label :can_transport, 'Are you able to transport the animal?' %>
 	Yes <%= f.radio_button :can_transport, 1 %>
 	No <%= f.radio_button :can_transport, 0 %>
