@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090216025059) do
+ActiveRecord::Schema.define(:version => 20090216015020) do
 
   create_table "volunteers", :force => true do |t|
     t.string   "first_name"
@@ -23,21 +23,7 @@ ActiveRecord::Schema.define(:version => 20090216025059) do
     t.string   "work_phone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "can_keep_dogs"
-    t.integer  "can_keep_cats"
-    t.string   "can_keep_other"
-    t.boolean  "can_keep_inside_initially"
-    t.boolean  "can_sleep_inside_ongoing"
-    t.integer  "dogs_owned"
-    t.integer  "cats_owned"
-    t.string   "other_owned"
-    t.integer  "hours_spent_at_home_per_day"
-    t.integer  "children"
-    t.string   "children_ages"
-    t.boolean  "can_transport"
-    t.boolean  "requires_financial_support"
-    t.boolean  "can_administer_medical"
-    t.integer  "offer_duration"
+    t.string   "email_address"
   end
 
 end

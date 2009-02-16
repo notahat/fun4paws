@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class VolunteerTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  should "create a volunteer" do
+    # This is really just to make sure our blueprint isn't broken.
+    assert_not_nil Volunteer.make
   end
+  
 end

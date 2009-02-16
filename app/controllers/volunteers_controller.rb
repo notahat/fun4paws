@@ -47,7 +47,7 @@ class VolunteersController < ApplicationController
     respond_to do |format|
       if @volunteer.save
         flash[:notice] = 'Volunteer was successfully created.'
-        format.html { redirect_to(@volunteer) }
+        format.html
         format.xml  { render :xml => @volunteer, :status => :created, :location => @volunteer }
       else
         format.html { render :action => "new" }
