@@ -1,7 +1,96 @@
-body { font: 15px/18px Helvetica, Arial, sans-serif; }
-input { font: 15px Helvetica, Arial, sans-serif; }
+body {
+	font: 15px/18px Helvetica, Arial, sans-serif;
+	width: 800px;
+	margin: 2em auto;
+	color: #555;
+	background: #fff;
+}
+input {
+	font: 15px Helvetica, Arial, sans-serif;
+}
 
-div.row { font-size: 14px; margin: 8px 0; }
-label { display: block; }
+div.row {
+	font-size: 14px;
+	margin: 8px 0;
+	float: left;
+}
+label {
+	display: block;
+	font-weight: bold;
+}
 
-.fieldWithErrors input { background-color: #ffcccc; }
+.fieldWithErrors input {
+	background-color: #ffcccc;
+}
+
+form fieldset {
+	background: #F0F8FF;
+	float: left;
+	border: 1px solid #F0F8FF;
+	border-top: 1px dashed #BCD2EE;
+	border-bottom: 1px dashed #BCD2EE;
+	width: 600px;
+	margin: .5em 0 1em 0;
+}
+input {
+	margin: 2px 20px 5px 0;
+	padding: 5px;
+}
+legend {
+	background: #fff;
+	border: 1px solid #BCD2EE;
+	padding: 7px 4px 4px 4px;
+	font-size: 18px;
+}
+
+p#help {
+	float: right;
+	background: #FEFFF1;
+	padding: 30px;
+	color: #F08080;
+}
+
+h1 {
+	font-family: optima;
+}
+
+.clear {
+	clear: both;
+}
+
+a img {
+	border: none;
+	float: left;
+	width: 700px;
+}
+
+/*TABLES*/
+table, tr, th, td {
+	border-bottom: 1px dotted #CDC1C5;
+	padding: 5px;
+	margin: 0;
+	text-align: left;
+}
+tr.odd {
+	background: #B0E2FF;
+}
+tr.even {
+	background: #fff;
+}
+table {
+	width: 800px;
+	background-color: #fafafa;
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+
+td {
+	border-bottom: 1px #B0E2FF solid;
+}
+
+a {
+	color: #333;
+	font-weight: bold;
+}
+

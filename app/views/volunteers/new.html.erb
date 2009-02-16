@@ -3,51 +3,97 @@
 <% form_for(@volunteer) do |f| %>
   <%= f.error_messages %>
   <fieldset>
-	  <legend>personal details</legend>
-	  <%= f.text_field_row :first_name %>
-	  <%= f.text_field_row :last_name %>
-	  <%= f.text_field_row :email_address %>
-	  <%= f.text_field_row :address_1 %>
-	  <%= f.text_field_row :address_2 %>
-	  <%= f.text_field_row :suburb %>
-	  <%= f.text_field_row :postcode %>
-	  <%= f.text_field_row :mobile_phone %>
-	  <%= f.text_field_row :home_phone %>
-	  <%= f.text_field_row :work_phone %>
+    <legend>Personal details</legend>
+	<%= f.text_field_row :first_name %>
+	<%= f.text_field_row :last_name %>
   </fieldset>
 
   <fieldset>
-	  <legend>Assistance you can offer</legend>
-	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
-	  <%= f.text_field_row :can_keep_cats, 'Number of cats' %>
-	  <%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
-	  <%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
-	  <%= f.text_field_row :can_transport, 'I can transport the animal' %>
+    <legend>Contact details</legend>
+    <p><b>We need at least one phone number and an email address we can contact you on.</b></p>
+    <%= f.text_field_row :mobile_phone %>
+    <%= f.text_field_row :home_phone %>
+    <%= f.text_field_row :work_phone %>
+    <%= f.text_field_row :email_address %>
   </fieldset>
 
   <fieldset>
-	  <legend>Conditions at home</legend>
-	  <%= f.text_field_row :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
-	  <%= f.text_field_row :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
-	  <%= f.text_field_row :hours_spent_at_home_per_day, 'How many hours a day would someone be home with the animal?' %>
-	  <%= f.text_field_row :children, 'How many children live at the property?' %>
-	  <%= f.text_field_row :dogs_owned, 'How many dogs live at the property?' %>
-	  <%= f.text_field_row :cats_owned, 'How many cats currently live at the property?' %>
-	  <%= f.text_field_row :other_owned, 'Any other species of pet? (bird, rabbit, etc)' %>
-	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+    <legend>Address</legend>
+    <%= f.text_field_row :address_1 %>
+    <%= f.text_field_row :address_2 %>
+    <%= f.text_field_row :suburb %>
+    <%= f.text_field_row :postcode %>
   </fieldset>
 
   <fieldset>
-	  <legend>Other details</legend>
-	  <%= f.text_field_row :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
-	  <%= f.text_field_row :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
-	  <%= f.text_field_row :hours_spent_at_home_per_day, 'How many hours a day would someone be home with the animal?' %>
-	  <%= f.text_field_row :children, 'How many children live at the property?' %>
-	  <%= f.text_field_row :dogs_owned, 'How many dogs live at the property?' %>
-	  <%= f.text_field_row :cats_owned, 'How many cats currently live at the property?' %>
-	  <%= f.text_field_row :other_owned, 'Any other species of pet? (bird, rabbit, etc)' %>
-	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+	<legend>Assistance you can offer</legend>
+	<%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+	<%= f.text_field_row :can_keep_cats, 'Number of cats' %>
+	<%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
+	<%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
+	<%= f.text_field_row :can_transport, 'I can transport the animal' %>
   </fieldset>
-  
-  <%= f.submit_row "Create" %>
+
+  <fieldset>
+    <legend>Conditions at home</legend>
+
+	<div class="row">
+	<%= f.label :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
+	Yes <%= f.radio_button :can_keep_inside_initially, 1 %>
+	No <%= f.radio_button :can_keep_inside_initially, 0 %>
+	</div>
+	
+	<div class="row">
+    <%= f.label :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
+	Yes <%= f.radio_button :can_sleep_inside_ongoing, 1 %>
+	No <%= f.radio_button :can_sleep_inside_ongoing, 0 %>
+	</div>
+	<div class="row">
+	<%= f.label :hours_spent_at_home_per_day, 'Approximately how many hours a day would someone be home with the animal?' %>
+	<%= f.select :hours_spent_at_home_per_day, (0..24).to_a %>
+	</div>
+	<div class="row">
+	<%= f.label :children, 'How many children live at the property?' %>
+	<%= f.select :children, %w(0 1 2 3 4 5+) %>
+	</div>
+	<div class="clear"></div>
+	<div class="row">
+    <%= f.label :dogs_owned, 'How many dogs live at the property?' %>
+    <%= f.select :dogs_owned, %w(0 1 2 3+) %>
+    </div>
+	<div class="clear"></div>
+
+	<div class="row">
+    <%= f.label :cats_owned, 'How many cats live at the property?' %>
+    <%= f.select :cats_owned, %w(0 1 2 3+) %>
+    </div>
+	<div class="clear"></div>
+
+    <%= f.text_field_row :other_owned, 'Any other pets? (please specify)' %>
+
+  </fieldset>
+
+  <fieldset>
+	<legend>Terms and Conditions</legend>
+	<p>You agree to return the pet and provided equipment to the owner on the owner’s request.</p>
+
+	<p>You agree to allow the pet owner to make regular reasonable contact with you to discuss the well being of their pet(s).</p>
+
+	<p>You agree that if for any reason you do not wish to continue to foster the pet(s), you will immediately contact Fun4Paws and allow them to manage a suitable relocation.</p>
+
+	<p>If for any reason you are going to be absent from the residence, Fun4Paws will need to be informed. Fun4Paws will assist in organizing appropriate care.</p>
+
+	<p>You agree to take full responsibility for the welfare of the pet(s) whilst it is in your care, excluding vet cost. You understand that any fees arising from negligence in caring for the dog will be the sole responsibility of the foster carer.</p>
+
+	<p>If for any number of reasons the pet becomes available for adoption, the carer will be given the first option to adopt.</p>
+
+	<p>Children’s access to the foster pet must be supervised at all times.</p>
+
+	<p>If you have a swimming pool it must be securely fenced for the safety of the pet.</p>
+	
+  </fieldset>
+
+  <div class="clear">
+  </div>
+  <%= f.submit "Register" %>
 <% end %>

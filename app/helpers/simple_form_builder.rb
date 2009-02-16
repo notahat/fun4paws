@@ -1,6 +1,6 @@
 class SimpleFormBuilder < ActionView::Helpers::FormBuilder
   
-  def text_field_row(attribute, label = nil)
+  def text_field_row(attribute, label = nil, options={})
     <<-EOF
       <div class="row">
         #{label(attribute, (label || attribute.to_s.humanize) + ":")}
@@ -8,8 +8,15 @@ class SimpleFormBuilder < ActionView::Helpers::FormBuilder
       </div>
     EOF
   end
-  
-  def password_field_row(attribute, label = nil)
+  def check_box_row(attribute, label = nil, options={})
+    <<-EOF
+      <div class="row">
+        #{check_box(attribute, options)}
+        #{label(attribute, (label || attribute.to_s.humanize) + ":")}
+      </div>
+    EOF
+  end
+  def password_field_row(attribute, label = nil, options={})
     <<-EOF
       <div class="row">
         #{label(attribute, (label || attribute.to_s.humanize) + ":")}
