@@ -46,7 +46,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        flash[:notice] = 'Volunteer was successfully created.'
+        flash[:notice] = 'Submission was accepted.'
         format.html
         format.xml  { render :xml => @volunteer, :status => :created, :location => @volunteer }
       else
