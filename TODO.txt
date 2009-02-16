@@ -1,5 +1,6 @@
 Milestone 1
 
+* fix IE css problem with radio buttons
 * finalize copy on welcome page
 * update form fields (e.g. boolean)
 * add validations for new fields
