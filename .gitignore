@@ -8,3 +8,6 @@ mail/*
 mail
 mail_list.txt-sorted
 system/
+config/database.yml
+mail_processing_command.txt
+collateral

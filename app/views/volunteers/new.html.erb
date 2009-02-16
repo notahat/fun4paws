@@ -2,17 +2,52 @@
 
 <% form_for(@volunteer) do |f| %>
   <%= f.error_messages %>
+  <fieldset>
+	  <legend>personal details</legend>
+	  <%= f.text_field_row :first_name %>
+	  <%= f.text_field_row :last_name %>
+	  <%= f.text_field_row :email_address %>
+	  <%= f.text_field_row :address_1 %>
+	  <%= f.text_field_row :address_2 %>
+	  <%= f.text_field_row :suburb %>
+	  <%= f.text_field_row :postcode %>
+	  <%= f.text_field_row :mobile_phone %>
+	  <%= f.text_field_row :home_phone %>
+	  <%= f.text_field_row :work_phone %>
+  </fieldset>
 
-  <%= f.text_field_row :first_name %>
-  <%= f.text_field_row :last_name %>
-  <%= f.text_field_row :email_address %>
-  <%= f.text_field_row :address_1 %>
-  <%= f.text_field_row :address_2 %>
-  <%= f.text_field_row :suburb %>
-  <%= f.text_field_row :postcode %>
-  <%= f.text_field_row :mobile_phone %>
-  <%= f.text_field_row :home_phone %>
-  <%= f.text_field_row :work_phone %>
+  <fieldset>
+	  <legend>Assistance you can offer</legend>
+	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+	  <%= f.text_field_row :can_keep_cats, 'Number of cats' %>
+	  <%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
+	  <%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
+	  <%= f.text_field_row :can_transport, 'I can transport the animal' %>
+  </fieldset>
+
+  <fieldset>
+	  <legend>Conditions at home</legend>
+	  <%= f.text_field_row :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
+	  <%= f.text_field_row :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
+	  <%= f.text_field_row :hours_spent_at_home_per_day, 'How many hours a day would someone be home with the animal?' %>
+	  <%= f.text_field_row :children, 'How many children live at the property?' %>
+	  <%= f.text_field_row :dogs_owned, 'How many dogs live at the property?' %>
+	  <%= f.text_field_row :cats_owned, 'How many cats currently live at the property?' %>
+	  <%= f.text_field_row :other_owned, 'Any other species of pet? (bird, rabbit, etc)' %>
+	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+  </fieldset>
+
+  <fieldset>
+	  <legend>Other details</legend>
+	  <%= f.text_field_row :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
+	  <%= f.text_field_row :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
+	  <%= f.text_field_row :hours_spent_at_home_per_day, 'How many hours a day would someone be home with the animal?' %>
+	  <%= f.text_field_row :children, 'How many children live at the property?' %>
+	  <%= f.text_field_row :dogs_owned, 'How many dogs live at the property?' %>
+	  <%= f.text_field_row :cats_owned, 'How many cats currently live at the property?' %>
+	  <%= f.text_field_row :other_owned, 'Any other species of pet? (bird, rabbit, etc)' %>
+	  <%= f.text_field_row :can_keep_dogs, 'Number of dogs' %>
+  </fieldset>
   
   <%= f.submit_row "Create" %>
 <% end %>

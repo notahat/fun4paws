@@ -1,0 +1,10 @@
+Milestone 1
+* add extra fields to form
+* load list into campaign monitor
+* deploy to slice
+* add logo to site
+* add intro page
+
+
+Milestone 2
+* Send confirmation email: add email_confirmed
