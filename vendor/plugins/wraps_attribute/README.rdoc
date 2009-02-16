@@ -1,0 +1,91 @@
+= WrapsAttribute
+
+The wraps_attribute Rails plugin lets you extract validation and normalisation
+of ActiveRecord attributes into a class.
+
+== Example
+
+The following is a simple class that validates and normalizes Australian phone
+numbers.
+
+  class PhoneNumber < String
+    def initialize(value)
+      super(value || '')
+    end
+
+    # Convert the phone number from local Australian format
+    # (0x xxxx xxxx, or variations) to a compact international
+    # format (61xxxxxxxxx).
+    def normalize
+      tr(' ()-', '').gsub(/\A\+/, '').gsub(/\A0/, '61')
+    end
+
+    # Returns true if the number is a valid Australian mobile phone number.
+    # Australian mobiles take the form: 04xx xxx xxx
+    def valid_australian_mobile?
+      normalize =~ /\A614\d{8}\Z/ && true
+    end
+    
+    # Returns true if the number is a valid Australian landline number.
+    # Australian landline numbers take the form: (0n) xxxx xxxx
+    # where n is the area code (2 for Sydney, 3 for Melbourne, etc.)
+    def valid_australian_landline?
+      normalize =~ /\A61[^4]\d{8}\Z/ && true
+    end
+
+    def valid?
+      valid_australian_mobile? || valid_australian_landline?
+    end
+
+    # Return the phone number formatted for output.
+    def format
+      number = normalize
+      if valid_australian_mobile?
+        "0#{number[2..4]} #{number[5..7]} #{number[8..10]}"
+      elsif valid_australian_landline?
+        "(0#{number[2..2]}) #{number[3..6]} #{number[7..10]}"
+      else
+        self
+      end
+    end
+  end
+  
+In your ActiveRecord model, you just do something like this:
+
+  class Person < ActiveRecord::Base
+    wraps_attribute :phone_number, PhoneNumber
+  end
+
+That does a couple of things:
+
+1. Before validations are done, the +normalize+ method is used to convert the phone
+   number to a canonical format to be stored in the database.
+   
+2. The <tt>valid</tt> method is used to validate the number when ActiveRecord does its
+   validations.
+   
+== Validation options
+
+If you want to use a different method than <tt>valid?</tt> for validation, use something like:
+
+  wraps_attribute :mobile_number, PhoneNumber, :validate => :valid_australian_mobile?
+  
+You can also turn off automatic validation entirely with:
+
+  wraps_attribute :phone_number, PhoneNumber, :validate => false
+  
+You can allow blank values for the attribute with:
+
+  wraps_attribute :phone_number, PhoneNumber, :allow_blank => true
+  
+You can specify a custom ActiveRecord error message to use on validation failure with:
+
+  wraps_attribute :phone_number, PhoneNumber, :message => "must be a valid Australian phone number"
+  
+Regular ActiveRecord validations also work with wrapped attributes. The attribute
+is normalized before validations are run.
+  
+  
+== Installation
+
+  ruby script/plugin install git://github.com/notahat/wraps_attribute.git
