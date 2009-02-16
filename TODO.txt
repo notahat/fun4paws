@@ -1,7 +1,6 @@
 Milestone 1
 
-* tidy up subscribers
-
+* finalize copy on welcome page
 * update form fields (e.g. boolean)
 * add validations for new fields
 * add new field to tests
@@ -20,13 +19,5 @@ Milestone 1
 * enter credit card info for campaign monitor
 
 
-
-* load list into campaign monitor
-* add logo to site
-
-style
-* intro page
-* form
-
-Milestone 3
+Milestone 2
 * Send confirmation email: add email_confirmed
