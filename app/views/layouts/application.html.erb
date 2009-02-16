@@ -6,13 +6,26 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Volunteers: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'application' %>
+<!--[if gte IE 7]> 
+  <style>
+    legend {
+      position: absolute;
+      top: -.8em;
+      left: .5em;
+    }
+    fieldset {
+      position: relative;
+      margin-top: 1em;
+      padding: 20px;
+    }
+  </style>
+<![endif]-->
 </head>
 <body>
 
 <%= image_tag '/images/fun4paws_logo2.png' %> 
 <p style="color: green"><%= flash[:notice] %></p>
-<div class='clear'>
-	</div>
+<div class='clear'></div>
 
 <%= yield  %>
 
