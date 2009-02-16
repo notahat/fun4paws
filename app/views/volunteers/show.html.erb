@@ -1,0 +1,48 @@
+<p>
+  <b>First name:</b>
+  <%=h @volunteer.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%=h @volunteer.last_name %>
+</p>
+
+<p>
+  <b>Address 1:</b>
+  <%=h @volunteer.address_1 %>
+</p>
+
+<p>
+  <b>Address 2:</b>
+  <%=h @volunteer.address_2 %>
+</p>
+
+<p>
+  <b>Suburb:</b>
+  <%=h @volunteer.suburb %>
+</p>
+
+<p>
+  <b>Postcode:</b>
+  <%=h @volunteer.postcode %>
+</p>
+
+<p>
+  <b>Mobile phone:</b>
+  <%=h @volunteer.mobile_phone %>
+</p>
+
+<p>
+  <b>Home phone:</b>
+  <%=h @volunteer.home_phone %>
+</p>
+
+<p>
+  <b>Work phone:</b>
+  <%=h @volunteer.work_phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
+<%= link_to 'Back', volunteers_path %>

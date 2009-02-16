@@ -1,0 +1,36 @@
+<h1>Listing volunteers</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Address 1</th>
+    <th>Address 2</th>
+    <th>Suburb</th>
+    <th>Postcode</th>
+    <th>Mobile phone</th>
+    <th>Home phone</th>
+    <th>Work phone</th>
+  </tr>
+
+<% for volunteer in @volunteers %>
+  <tr>
+    <td><%=h volunteer.first_name %></td>
+    <td><%=h volunteer.last_name %></td>
+    <td><%=h volunteer.address_1 %></td>
+    <td><%=h volunteer.address_2 %></td>
+    <td><%=h volunteer.suburb %></td>
+    <td><%=h volunteer.postcode %></td>
+    <td><%=h volunteer.mobile_phone %></td>
+    <td><%=h volunteer.home_phone %></td>
+    <td><%=h volunteer.work_phone %></td>
+    <td><%= link_to 'Show', volunteer %></td>
+    <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
+    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New volunteer', new_volunteer_path %>
