@@ -3,45 +3,15 @@
 <% form_for(@volunteer) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :address_1 %><br />
-    <%= f.text_field :address_1 %>
-  </p>
-  <p>
-    <%= f.label :address_2 %><br />
-    <%= f.text_field :address_2 %>
-  </p>
-  <p>
-    <%= f.label :suburb %><br />
-    <%= f.text_field :suburb %>
-  </p>
-  <p>
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </p>
-  <p>
-    <%= f.label :mobile_phone %><br />
-    <%= f.text_field :mobile_phone %>
-  </p>
-  <p>
-    <%= f.label :home_phone %><br />
-    <%= f.text_field :home_phone %>
-  </p>
-  <p>
-    <%= f.label :work_phone %><br />
-    <%= f.text_field :work_phone %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
+  <%= f.text_field_row :first_name %>
+  <%= f.text_field_row :last_name %>
+  <%= f.text_field_row :address_1 %>
+  <%= f.text_field_row :address_2 %>
+  <%= f.text_field_row :suburb %>
+  <%= f.text_field_row :postcode %>
+  <%= f.text_field_row :mobile_phone %>
+  <%= f.text_field_row :home_phone %>
+  <%= f.text_field_row :work_phone %>
+  
+  <%= f.submit_row "Create" %>
 <% end %>
-
-<%= link_to 'Back', volunteers_path %>
