@@ -72,4 +72,14 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+  
+  PASSWORD_FILE = File.join(File.dirname(__FILE__),'..','system', 'admin_password')
+  if ! File.exists? PASSWORD_FILE
+    FileUtils.mkdir_p(File.dirname(PASSWORD_FILE))
+    File.open(PASSWORD_FILE, 'w') do |f|
+      f.write "ADMIN_USERNAME = 'admin'\n"
+      f.write "ADMIN_PASSWORD = ''\n"
+    end
+  end
+  load PASSWORD_FILE
 end
