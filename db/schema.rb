@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090216025059) do
+ActiveRecord::Schema.define(:version => 20090217040149) do
 
   create_table "volunteers", :force => true do |t|
     t.string   "first_name"
@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(:version => 20090216025059) do
     t.boolean  "can_administer_medical"
     t.integer  "offer_duration"
     t.string   "email_address"
+    t.boolean  "will_take_stray"
+    t.string   "how_secure"
+    t.string   "dog_safe_gates"
   end
 
 end

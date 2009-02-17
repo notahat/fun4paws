@@ -14,6 +14,7 @@
     <%= f.text_field_row :email_address %>
     <div class="clear">
     <%= f.text_field_row :mobile_phone %>
+    <div class="clear">
     <%= f.text_field_row :home_phone %>
     <%= f.text_field_row :work_phone %>
   </fieldset>
@@ -38,12 +39,22 @@
     </div>
     <div class="clear"></div>
 	<%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
-	<div class="clear"></div>
-	<%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
-	<div class="row clear" style="width: 100%">
-	<%= f.label :can_transport, 'Are you able to transport the animal?' %>
+	<div class="row clear">	
+	<%= f.label :can_transport, 'Are you able to pick up the pet(s) from a designated location?' %>
 	Yes <%= f.radio_button :can_transport, 1 %>
 	No <%= f.radio_button :can_transport, 0 %>
+	</div>
+	
+	<div class="row clear">
+	<%= f.label :will_take_stray, 'Some of the pets will have lost their families. Are you prepared to foster a displaced (stray) pet until an adoptive home can be found?' %>
+	Yes <%= f.radio_button :will_take_stray, 1 %>
+	No <%= f.radio_button :will_take_stray, 0 %>
+	</div>
+	
+	<div class="row clear">
+	<%= f.label :requires_financial_support, "Do you need financial support to meet the pet’s basic needs? <br/> (This will not disqualify anyone from being a foster carer)" %>
+	Yes <%= f.radio_button :requires_financial_support, 1 %>
+	No <%= f.radio_button :requires_financial_support, 0 %>
 	</div>
   </fieldset>
 
@@ -51,7 +62,7 @@
     <legend>Conditions at home</legend>
 
 	<div class="row" style="width: 100%">
-	<%= f.label :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
+	<%= f.label :can_keep_inside_initially, 'Are you able to safely confine the foster pet(s) within your house for an initial settling in period?' %>
 	Yes <%= f.radio_button :can_keep_inside_initially, 1 %>
 	No <%= f.radio_button :can_keep_inside_initially, 0 %>
 	</div>
@@ -61,26 +72,38 @@
 	Yes <%= f.radio_button :can_sleep_inside_ongoing, 1 %>
 	No <%= f.radio_button :can_sleep_inside_ongoing, 0 %>
 	</div>
+	
+	<%= f.text_field_row :how_secure, 'How dog secure is your fencing? height, picket, pailing etc.' %>
+	
 	<div class="row" style="width: 100%">
-	<%= f.label :hours_spent_at_home_per_day, 'Approximately how many hours a day would someone be home with the animal?' %>
+	<%= f.label :dog_safe_gates, 'Do you have dog safe gates?' %>
+	Yes <%= f.radio_button :dog_safe_gates, 1 %>
+	No <%= f.radio_button :dog_safe_gates, 0 %>
+	</div>
+	
+	<div class="row" style="width: 100%">
+	<%= f.label :hours_spent_at_home_per_day, 'How many hours a day are you generally home?' %>
 	<%= f.select :hours_spent_at_home_per_day, (0..24).to_a %>
 	</div>
+	
 	<div class="row" style="width: 100%">
 	<%= f.label :children, 'How many children live at the property?' %>
 	<%= f.select :children, %w(0 1 2 3 4 5+) %>
 	</div>
+	
 	<div class="row clear" style="width: 100%">
     <%= f.label :dogs_owned, 'How many dogs live at the property?' %>
     <%= f.select :dogs_owned, %w(0 1 2 3+) %>
     </div>
+
 	<div class="row clear" style="width: 100%">
     <%= f.label :cats_owned, 'How many cats live at the property?' %>
     <%= f.select :cats_owned, %w(0 1 2 3+) %>
     </div>
+
 	<div class="clear"></div>
 
     <%= f.text_field_row :other_owned, 'Any other pets? (please specify)' %>
-
   </fieldset>
 
   <fieldset>
