@@ -8,7 +8,7 @@ module ActiveRecord
       def wraps_attribute(attribute, wrapper_class, options = {})
         options = { :validate => :valid?, :message => "must be valid" }.merge(options)
         
-        before_validation {|object| object.send(:write_attribute, attribute, object.send(attribute).normalize) }
+        before_save {|object| object.send(:write_attribute, attribute, object.send(attribute).normalize) }
 
         if options[:validate]
           validate do |object|

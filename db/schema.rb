@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20090216025059) do
     t.string   "work_phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email_address"
     t.integer  "can_keep_dogs"
     t.integer  "can_keep_cats"
     t.string   "can_keep_other"
@@ -38,7 +39,6 @@ ActiveRecord::Schema.define(:version => 20090216025059) do
     t.boolean  "requires_financial_support"
     t.boolean  "can_administer_medical"
     t.integer  "offer_duration"
-    t.string   "email_address"
   end
 
 end
