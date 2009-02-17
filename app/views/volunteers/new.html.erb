@@ -13,9 +13,10 @@
     <p><b>We need an email address and at least one phone number we can contact you on.</b></p>
     <%= f.text_field_row :email_address %>
     <div class="clear">
-    <%= f.text_field_row :mobile_phone, nil, :value => @volunteer.mobile_phone.format %>
-    <%= f.text_field_row :home_phone, nil, :value => @volunteer.home_phone.format %>
-    <%= f.text_field_row :work_phone, nil, :value => @volunteer.work_phone.format %>
+      <%= f.text_field_row :mobile_phone, nil, :value => @volunteer.mobile_phone.format %>
+      <%= f.text_field_row :home_phone, nil, :value => @volunteer.home_phone.format %>
+      <%= f.text_field_row :work_phone, nil, :value => @volunteer.work_phone.format %>
+    </div>
   </fieldset>
 
   <fieldset>
