@@ -31,20 +31,39 @@
 	<legend>Assistance you can offer</legend>
 	<div class="row">
     <%= f.label :can_keep_dogs, 'Number of dogs?' %>
-    <%= f.select :can_keep_dogs, %w(0 1 2) %>
+    <%= f.select :can_keep_dogs, (0..2).to_a %>
     </div>
 	<div class="row clear">
     <%= f.label :can_keep_cats, 'Number of cats?' %>
-    <%= f.select :can_keep_cats, %w(0 1 2) %>
+    <%= f.select :can_keep_cats, (0..2).to_a  %>
     </div>
     <div class="clear"></div>
 	<%= f.text_field_row :can_keep_other, 'Other (please specify)' %>
-	<div class="clear"></div>
-	<%= f.text_field_row :offer_duration, 'How many months do you see yourself being able to look after the pet?' %>
-	<div class="row clear" style="width: 100%">
-	<%= f.label :can_transport, 'Are you able to transport the animal?' %>
-	Yes <%= f.radio_button :can_transport, 1 %>
-	No <%= f.radio_button :can_transport, 0 %>
+	<div class="row clear">	
+	<%= f.label :can_transport, 'Are you able to pick up the pet(s) from a designated location?' %>
+	Yes <%= f.radio_button :can_transport, true %>
+	No <%= f.radio_button :can_transport, false %>
+	</div>
+	
+	<div class="row clear">
+	<%= f.label :will_take_stray, 'Some of the pets will have lost their families. Are you prepared to foster a displaced (stray) pet until an adoptive home can be found?' %>
+	Yes <%= f.radio_button :will_take_stray, true %>
+	No <%= f.radio_button :will_take_stray, false %>
+	</div>
+	
+	<div class="row clear">
+	<%= f.label :can_administer_medical_care, 'Are you able to administer basic medical care under vet advice if required?' %>
+	Yes <%= f.radio_button :can_administer_medical_care, true %>
+	No <%= f.radio_button :can_administer_medical_care, false %>
+	</div>
+	
+	<%= f.text_field_row :special_skills, 'Please list any relevant experience such as vet nursing, dog training etc?' %>
+    	
+	
+	<div class="row clear">
+	<%= f.label :requires_financial_support, "Do you need financial support to meet the pet’s basic needs? <br/> (This will not disqualify anyone from being a foster carer)" %>
+	Yes <%= f.radio_button :requires_financial_support, true %>
+	No <%= f.radio_button :requires_financial_support, false %>
 	</div>
   </fieldset>
 
@@ -52,36 +71,48 @@
     <legend>Conditions at home</legend>
 
 	<div class="row" style="width: 100%">
-	<%= f.label :can_keep_inside_initially, 'Can the animal be kept inside the house for the first few days?' %>
-	Yes <%= f.radio_button :can_keep_inside_initially, 1 %>
-	No <%= f.radio_button :can_keep_inside_initially, 0 %>
+	<%= f.label :can_keep_inside_initially, 'Are you able to safely confine the foster pet(s) within your house for an initial settling in period?' %>
+	Yes <%= f.radio_button :can_keep_inside_initially, true %>
+	No <%= f.radio_button :can_keep_inside_initially, false %>
 	</div>
 	
 	<div class="row clear" style="width: 100%">
     <%= f.label :can_sleep_inside_ongoing, 'Can the animal sleep inside on an ongoing basis?' %>
-	Yes <%= f.radio_button :can_sleep_inside_ongoing, 1 %>
-	No <%= f.radio_button :can_sleep_inside_ongoing, 0 %>
+	Yes <%= f.radio_button :can_sleep_inside_ongoing, true %>
+	No <%= f.radio_button :can_sleep_inside_ongoing, false %>
 	</div>
+	
+	<%= f.text_field_row :how_secure, 'How dog secure is your fencing? height, picket, pailing etc.' %>
+	
 	<div class="row" style="width: 100%">
-	<%= f.label :hours_spent_at_home_per_day, 'Approximately how many hours a day would someone be home with the animal?' %>
+	<%= f.label :dog_safe_gates, 'Do you have dog safe gates?' %>
+	Yes <%= f.radio_button :dog_safe_gates, true %>
+	No <%= f.radio_button :dog_safe_gates, false %>
+	</div>
+	
+	<div class="row" style="width: 100%">
+	<%= f.label :hours_spent_at_home_per_day, 'How many hours a day are you generally home?' %>
 	<%= f.select :hours_spent_at_home_per_day, (0..24).to_a %>
 	</div>
+	
 	<div class="row" style="width: 100%">
 	<%= f.label :children, 'How many children live at the property?' %>
-	<%= f.select :children, %w(0 1 2 3 4 5+) %>
+	<%= f.select :children, (0..5).to_a %>
 	</div>
+	
 	<div class="row clear" style="width: 100%">
     <%= f.label :dogs_owned, 'How many dogs live at the property?' %>
-    <%= f.select :dogs_owned, %w(0 1 2 3+) %>
+    <%= f.select :dogs_owned, (0..5).to_a %>
     </div>
+
 	<div class="row clear" style="width: 100%">
     <%= f.label :cats_owned, 'How many cats live at the property?' %>
-    <%= f.select :cats_owned, %w(0 1 2 3+) %>
+    <%= f.select :cats_owned, (0..5).to_a %>
     </div>
+
 	<div class="clear"></div>
 
     <%= f.text_field_row :other_owned, 'Any other pets? (please specify)' %>
-
   </fieldset>
 
   <fieldset>
@@ -100,7 +131,7 @@
 
 	<p>Children’s access to the foster pet must be supervised at all times.</p>
 
-	<p>If you have a swimming pool it must be securely fenced for the safety of the pet.</p>
+	<p>If you have a swimming pool or water feature it must be securely fenced for the safety of the pet.</p>
 	
 	<p><strong>By clicking on 'I accept' below you are agreeing to the Terms and Conditions above.</strong></p>
   <%= f.submit "I accept. Register me." %>
