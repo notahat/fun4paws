@@ -5,7 +5,9 @@ class PhoneNumber < String
   end
   
   def normalize
-    tr(' ()-.', '').gsub(/\A\+/, '').gsub(/\A0/, '61')
+    result = tr(' ()-.', '').gsub(/\A\+/, '')
+    result = "03#{result}" if result =~ /^\d{8}$/
+    result.gsub(/\A0/, '61')
   end
   
   def valid_australian_mobile?
