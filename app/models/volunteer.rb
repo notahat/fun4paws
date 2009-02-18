@@ -12,12 +12,7 @@ class Volunteer < ActiveRecord::Base
   
   before_validation_on_create :geocode_address
 
-  private
-  def geocode_address
-    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
-    # errors.add(:address, "Could not Geocode address") if !geo.success
-    self.lat, self.lng = geo.lat,geo.lng if geo.success
-  end
+
   
   
   CSV_FIELDS = (Volunteer.column_names - ["id", "created_at", "updated_at"])
@@ -40,5 +35,19 @@ class Volunteer < ActiveRecord::Base
     if mobile_phone.blank? && home_phone.blank? && work_phone.blank?
       errors.add_to_base("You must provide at least one of mobile phone, home phone, or work phone")
     end
+  end
+  
+  def update_latlng
+    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    # errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
+    save
+  end
+  
+  private
+  def geocode_address
+    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    # errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
   end
 end
