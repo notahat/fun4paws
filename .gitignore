@@ -11,3 +11,4 @@ system/
 config/database.yml
 mail_processing_command.txt
 collateral
+clean_lists/*

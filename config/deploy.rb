@@ -17,7 +17,7 @@ set :database_yml_in_scm, false
 set :shared_dirs, 'system'
 
 # set :packages_for_project, %w(libmagick9-dev imagemagick libfreeimage3) # list of packages to be installed
-# set :gems_for_project, %w(rmagick mini_magick image_science) # list of gems to be installed
+set :gems_for_project, %w(fastercsv will_paginate) # list of gems to be installed
 
 # Update these if you're not running everything on one host.
 role :app, domain

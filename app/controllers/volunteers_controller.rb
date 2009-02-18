@@ -1,10 +1,20 @@
 class VolunteersController < ApplicationController
   before_filter :authenticate, :except => [:new, :create]
   
+  def map
+    @volunteers = Volunteer.find(:all)
+    respond_to do |format|
+      format.html {render :layout => false}
+    end
+  end
+  
   # GET /volunteers
   # GET /volunteers.xml
   def index
-    @volunteers = Volunteer.find(:all)
+    # @volunteers = Volunteer.find(:all)
+    # @volunteers = Volunteer.paginate_by_board_id @board.id, :page => params[:page], :order => 'updated_at DESC'
+    @volunteer_count = Volunteer.count
+    @volunteers = Volunteer.paginate :page => params[:page], :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb

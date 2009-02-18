@@ -1,5 +1,6 @@
 require 'fastercsv'
 class Volunteer < ActiveRecord::Base
+  acts_as_mappable
   validates_presence_of :first_name, :last_name
   wraps_attribute :email_address, EmailAddress
   validates_presence_of :address_1, :suburb
@@ -8,6 +9,16 @@ class Volunteer < ActiveRecord::Base
   wraps_attribute :home_phone,   PhoneNumber, :allow_blank => true
   wraps_attribute :work_phone,   PhoneNumber, :allow_blank => true
   validate :must_have_at_least_one_phone_number
+  
+  before_validation_on_create :geocode_address
+
+  private
+  def geocode_address
+    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    # errors.add(:address, "Could not Geocode address") if !geo.success
+    self.lat, self.lng = geo.lat,geo.lng if geo.success
+  end
+  
   
   CSV_FIELDS = (Volunteer.column_names - ["id", "created_at", "updated_at"])
   
@@ -21,6 +32,9 @@ class Volunteer < ActiveRecord::Base
      end
   end
   
+  def address
+    "#{address_1}, #{address_2}, #{suburb}, #{postcode}"
+  end
   
   def must_have_at_least_one_phone_number
     if mobile_phone.blank? && home_phone.blank? && work_phone.blank?
