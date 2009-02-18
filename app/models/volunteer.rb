@@ -12,9 +12,6 @@ class Volunteer < ActiveRecord::Base
   
   before_validation_on_create :geocode_address
 
-
-  
-  
   CSV_FIELDS = (Volunteer.column_names - ["id", "created_at", "updated_at"])
   
   def self.generate_csv(volunteers)
@@ -38,7 +35,7 @@ class Volunteer < ActiveRecord::Base
   end
   
   def update_latlng
-    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    geo=Geokit::Geocoders::MultiGeocoder.geocode(address)
     # errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
     save
@@ -46,7 +43,7 @@ class Volunteer < ActiveRecord::Base
   
   private
   def geocode_address
-    geo=Geokit::Geocoders::MultiGeocoder.geocode (address)
+    geo=Geokit::Geocoders::MultiGeocoder.geocode(address)
     # errors.add(:address, "Could not Geocode address") if !geo.success
     self.lat, self.lng = geo.lat,geo.lng if geo.success
   end

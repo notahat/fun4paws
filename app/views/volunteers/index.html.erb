@@ -1,4 +1,4 @@
-<h1>Listing volunteers (<%= @volunteer_count %> in total)</h2> <%= link_to 'download csv file', '/volunteers.csv'%>
+<h1>Listing volunteers (<%= @volunteer_count %> in total)</h2> <%= link_to 'download csv file', '/volunteers.csv', :style => "padding: 0 100px;"%> <%= link_to 'view all on map', '/volunteers/map', :style => "padding: 0 100px;" %>
 
 
 <%= will_paginate @volunteers, :class => 'apple_pagination' %>
