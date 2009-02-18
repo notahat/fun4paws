@@ -29,12 +29,12 @@ function init() {
 		map.setZoom(map.getBoundsZoomLevel(bounds));
 		map.setCenter(bounds.getCenter());
 		
-		// Monitor the window resize event and let the map know when it occurs
-		if (window.attachEvent) { 
-		  window.attachEvent("onresize", function() {this.map.onResize()} );
-		} else {
-		  window.addEventListener("resize", function() {this.map.onResize()} , false);
-		}
+		// // Monitor the window resize event and let the map know when it occurs
+		// if (window.attachEvent) { 
+		//   window.attachEvent("onresize", function() {this.map.onResize()} );
+		// } else {
+		//   window.addEventListener("resize", function() {this.map.onResize()} , false);
+		// }
 	}
 
 
