@@ -14,15 +14,13 @@
   </tr>
 <% for volunteer in @volunteers %>
   <tr>
-    <td><%=h volunteer.first_name %> <%=h volunteer.last_name %></td>
+    <td><%= link_to h("#{volunteer.first_name} #{volunteer.last_name}"), volunteer %></td>
     <td><%=h volunteer.suburb %></td>
     <td><%=h volunteer.postcode %></td>
     <td><%=h volunteer.can_keep_dogs %></td>
     <td><%=h volunteer.can_keep_cats %></td>
     <td><%=h volunteer.can_keep_other %></td>
-    <td><%#= link_to 'Show', volunteer %></td>
-    <td><%#= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-    <td><%#= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete if params[:d] %></td>
   </tr>
 <% end %>
 </table>
