@@ -25,7 +25,7 @@ class Volunteer < ActiveRecord::Base
   end
   
   def address
-    "#{address_1}, #{address_2}, #{suburb}, #{postcode}"
+    "#{address_1}, #{address_2}, #{suburb}, #{postcode}, australia"
   end
   
   def must_have_at_least_one_phone_number
