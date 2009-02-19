@@ -56,15 +56,15 @@
 	Yes <%= f.radio_button :can_administer_medical_care, true %>
 	No <%= f.radio_button :can_administer_medical_care, false %>
 	</div>
-	
+	<div class="clear">
 	<%= f.text_field_row :special_skills, 'Please list any relevant experience such as vet nursing, dog training etc?' %>
-    	
+    </div>
 	
 	<div class="row clear">
 	<%= f.label :requires_financial_support, "Do you need financial support to meet the pet’s basic needs? <br/> (This will not disqualify anyone from being a foster carer)" %>
 	Yes <%= f.radio_button :requires_financial_support, true %>
 	No <%= f.radio_button :requires_financial_support, false %>
-	</div>
+	</div>    
   </fieldset>
 
   <fieldset>
