@@ -19,7 +19,7 @@ class VolunteersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @volunteers }
-      format.csv  { send_data(Volunteer.generate_csv(@volunteers), :type => 'text/csv; charset=utf-8; header=present', :filename => "all_volunteers.csv")
+      format.csv  { send_data(Volunteer.generate_csv(Volunteer.find(:all)), :type => 'text/csv; charset=utf-8; header=present', :filename => "all_volunteers.csv")
       }
     end
   end
