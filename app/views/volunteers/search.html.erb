@@ -1,0 +1,29 @@
+<h2>Search for volunteers</h2>
+<% form_tag '/volunteers/search', :method => :get do -%>
+<% options_within = [1,2,5,10,25,100,200,1000].collect{|v| "<option #{'selected="selected"' if params['within'] == v.to_s}>#{v}</option>"}.join %>
+<% options_can_keep_dogs = [1,2].collect{|v| "<option #{'selected="selected"' if params['can_keep_dogs'] == v.to_s}>#{v}</option>"}.join %>
+<% options_hours_at_home = (1..24).collect{|v| "<option #{'selected="selected"' if params['hours_at_home'] == v.to_s}>#{v}</option>"}.join %>
+
+Within <%= select_tag :within, options_within %> km of <%= text_field_tag 'address', params['address'], :size => 40  %><br/>
+who can take <%= select_tag :can_keep_dogs, options_can_keep_dogs %> dogs 
+and spends more than <%= select_tag :hours_at_home, options_hours_at_home %> hours a day at home.
+
+<%= submit_tag 'Search' %>
+
+<br />
+<br />
+	<% if @volunteers %>
+
+	<!-- <div>Showing <%= @volunteers.size %></div> -->
+		<%= will_paginate @volunteers, :class => 'apple_pagination' %>
+		<div id="map" style="width: 800px; height: 600px;"></div><br/><br/>
+
+		<%= render :partial => 'map_points' %>
+		<%= javascript_include_tag 'gmaps' %>
+
+		<%= render :partial => 'volunteers' %>
+		<%= will_paginate @volunteers, :class => 'apple_pagination' %>
+	
+	<% end %>
+
+<% end %>

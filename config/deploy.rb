@@ -29,3 +29,7 @@ namespace :deploy do
     top.deprec.app.restart
   end
 end
+
+task :ff do
+  puts application
+end

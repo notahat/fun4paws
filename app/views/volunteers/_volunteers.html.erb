@@ -1,0 +1,25 @@
+<table>
+  <tr>
+	<th>Id</th>
+    <th>Name</th>
+    <th>Suburb</th>
+    <th>Postcode</th>
+    <th>Dog</th>
+    <th>Cat</th>
+    <th>Other</th>
+    <th>Skills</th>
+  </tr>
+<% for volunteer in @volunteers %>
+  <tr>
+	<td><%=h volunteer.id %></td>
+    <td><%= link_to h("#{volunteer.first_name} #{volunteer.last_name}"), volunteer %></td>
+    <td><%=h volunteer.suburb %></td>
+    <td><%=h volunteer.postcode %></td>
+    <td><%=h volunteer.can_keep_dogs %></td>
+    <td><%=h volunteer.can_keep_cats %></td>
+    <td><%=h volunteer.can_keep_other %></td>
+    <td><%=h volunteer.special_skills %></td>
+    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete if params[:d] %></td>
+  </tr>
+<% end %>
+</table>

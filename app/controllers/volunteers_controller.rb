@@ -14,13 +14,23 @@ class VolunteersController < ApplicationController
     # @volunteers = Volunteer.find(:all)
     # @volunteers = Volunteer.paginate_by_board_id @board.id, :page => params[:page], :order => 'updated_at DESC'
     @volunteer_count = Volunteer.count
-    @volunteers = Volunteer.paginate :page => params[:page], :order => 'created_at DESC'
+    
+    @volunteers = Volunteer.paginate :page => params[:page], :order => 'id DESC'
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @volunteers }
-      format.csv  { send_data(Volunteer.generate_csv(Volunteer.find(:all)), :type => 'text/csv; charset=utf-8; header=present', :filename => "all_volunteers.csv")
+      format.csv  { send_data(Volunteer.generate_csv(@volunteers), :type => 'text/csv; charset=utf-8; header=present', :filename => "all_volunteers.csv")
       }
+    end
+  end
+  
+  def search
+    if params['address']
+      @volunteers = Volunteer.can_keep_dogs(params['can_keep_dogs']).hours_at_home(params['hours_at_home']).find(:all, :origin => params['address'], :within => params['within'], :order => :distance).paginate :page => params[:page]
+    end
+    respond_to do |format|
+      format.html # index.html.erb
     end
   end
 

@@ -1,47 +1,40 @@
-<p>
-  <b>First name:</b>
-  <%=h @volunteer.first_name %>
-</p>
+<table>
+	<!-- <tr>
+		<th>Name:</th>
+		<td><%=h @volunteer.first_name %> <%=h @volunteer.last_name %></td>
+	</tr>
+	<tr>
+		<th>Address:</th>
+		<td>
+			<%=h @volunteer.address_1 %><br/>
+	  		<%=h @volunteer.address_2 %><br/>
+	  		<%=h @volunteer.suburb %> <%=h @volunteer.postcode %>
+		</td>
+	</tr>
+	<tr>
+		<th>Mobile phone:</th>
+		<td><%=h @volunteer.mobile_phone %></td>
+	</tr>
+	<tr>
+		<th>Home phone:</th>
+		<td><%=h @volunteer.home_phone %></td>
+	</tr>
+	<tr>
+		<th>Work phone:</th>
+		<td><%=h @volunteer.work_phone %></td>
+	</tr> -->
+	
+	<% Volunteer.viewable_fields.map do |f| %>
+		<tr>
+			<th><%= f.humanize.capitalize %>:</th>
+			<td><%=h @volunteer.send(f) %></td>
+		</tr>
+	<% end %>
 
-<p>
-  <b>Last name:</b>
-  <%=h @volunteer.last_name %>
-</p>
+</table>
 
-<p>
-  <b>Address 1:</b>
-  <%=h @volunteer.address_1 %>
-</p>
 
-<p>
-  <b>Address 2:</b>
-  <%=h @volunteer.address_2 %>
-</p>
 
-<p>
-  <b>Suburb:</b>
-  <%=h @volunteer.suburb %>
-</p>
-
-<p>
-  <b>Postcode:</b>
-  <%=h @volunteer.postcode %>
-</p>
-
-<p>
-  <b>Mobile phone:</b>
-  <%=h @volunteer.mobile_phone %>
-</p>
-
-<p>
-  <b>Home phone:</b>
-  <%=h @volunteer.home_phone %>
-</p>
-
-<p>
-  <b>Work phone:</b>
-  <%=h @volunteer.work_phone %>
-</p>
 
 
 <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |

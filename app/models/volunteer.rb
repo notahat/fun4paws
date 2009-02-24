@@ -12,7 +12,14 @@ class Volunteer < ActiveRecord::Base
   
   before_validation_on_create :geocode_address
 
-  CSV_FIELDS = (Volunteer.column_names - ["id", "created_at", "updated_at"])
+  
+  named_scope :can_keep_dogs, lambda { |number|
+    { :conditions => ["can_keep_dogs >= ?", number.to_i] }
+  }
+  
+  named_scope :hours_at_home, lambda { |number|
+    { :conditions => ["hours_spent_at_home_per_day >= ?", number.to_i] }
+  }
   
   def self.generate_csv(volunteers)
      FasterCSV.generate do |csv|
@@ -22,6 +29,12 @@ class Volunteer < ActiveRecord::Base
          csv << (CSV_FIELDS.map{ |f| v.send(f) }).flatten
        end
      end
+  end
+  
+  CSV_FIELDS = (Volunteer.column_names - ["id", "created_at", "updated_at", "lat", "lng"])
+  
+  def self.viewable_fields
+    CSV_FIELDS
   end
   
   def address

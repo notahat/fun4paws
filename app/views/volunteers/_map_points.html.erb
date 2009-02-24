@@ -1,0 +1,7 @@
+<script type="text/javascript">
+var markers = [
+<%= @volunteers.select{|v| v.lat && v.lng}.collect{|v|
+"{'lat': #{v.lat}, 'lng': #{v.lng}, 'name': '#{html_info(v)}'}"
+}.join(",\n") if @volunteers %>
+]
+</script>

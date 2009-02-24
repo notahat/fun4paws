@@ -19,8 +19,10 @@ function addMarker(lat, lng, desc) {
 function init() {
 	if (GBrowserIsCompatible()) {
 		map = new GMap2(document.getElementById("map"));
+		
 		map.addControl(new GSmallMapControl());
-		map.setCenter(new GLatLng(centerLatitude, centerLongitude), startZoom);
+		center_point = new GLatLng(centerLatitude, centerLongitude);
+		map.setCenter(center_point, startZoom);
 
 		// addMarker(centerLatitude, centerLongitude, 'foo' )
 		for(i=0; i<markers.length; i++) {

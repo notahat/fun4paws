@@ -1,30 +1,7 @@
 <h1>Listing volunteers (<%= @volunteer_count %> in total)</h2> <%= link_to 'download csv file', '/volunteers.csv', :style => "padding: 0 100px;"%> <%= link_to 'view all on map', '/volunteers/map', :style => "padding: 0 100px;" %>
 
-
 <%= will_paginate @volunteers, :class => 'apple_pagination' %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Suburb</th>
-    <th>Postcode</th>
-    <th>Dog</th>
-    <th>Cat</th>
-    <th>Other</th>
-  </tr>
-<% for volunteer in @volunteers %>
-  <tr>
-    <td><%= link_to h("#{volunteer.first_name} #{volunteer.last_name}"), volunteer %></td>
-    <td><%=h volunteer.suburb %></td>
-    <td><%=h volunteer.postcode %></td>
-    <td><%=h volunteer.can_keep_dogs %></td>
-    <td><%=h volunteer.can_keep_cats %></td>
-    <td><%=h volunteer.can_keep_other %></td>
-    <td><%= link_to 'Destroy', volunteer, :confirm => 'Are you sure?', :method => :delete if params[:d] %></td>
-  </tr>
-<% end %>
-</table>
-
+<%= render :partial => 'volunteers' %>
 <%= will_paginate @volunteers, :class => 'apple_pagination' %>
 
 <%= link_to 'New volunteer', new_volunteer_path %>

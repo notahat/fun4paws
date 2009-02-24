@@ -3,22 +3,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Google Maps JavaScript API Example</title>
+    <title>fun4paws volunteer map</title>
   <style type="text/css">
     v\:* {behavior:url(#default#VML);}
     html, body {width: 100%; height: 100%}
     body {margin-top: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px}
   </style>
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAC7LDoM1owmUzuDy0v9kzUBTsD2SUe23eQJWOpzD6T6CTR-38LhTBzQ48ZMrT3aAo1yLV_A_WfGpIMQ"
-      type="text/javascript"></script>
-	<script type="text/javascript">
-	var markers = [
-	<%= @volunteers.select{|v| v.lat && v.lng}.collect{|v|
-	"{'lat': #{v.lat}, 'lng': #{v.lng}, 'name': '#{html_info(v)}'}"
-	}.join(",\n") %>
-	]
-	</script>
-	<%= javascript_include_tag 'gmaps' %>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAC7LDoM1owmUzuDy0v9kzUBTsD2SUe23eQJWOpzD6T6CTR-38LhTBzQ48ZMrT3aAo1yLV_A_WfGpIMQ"
+  type="text/javascript"></script>
 
   </head>
   <body>
@@ -33,6 +25,8 @@
 				<a href="/volunteers"><b>Back to main site</b></a>
 			</center>
     </div>
+<%= render :partial => 'map_points' %>
+<%= javascript_include_tag 'gmaps' %>
 
   </body>
 </html>
