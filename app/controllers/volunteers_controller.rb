@@ -27,7 +27,7 @@ class VolunteersController < ApplicationController
   
   def search
     if params['address']
-      @volunteers = Volunteer.can_keep_dogs(params['can_keep_dogs']).hours_at_home(params['hours_at_home']).find(:all, :origin => params['address'], :within => params['within'], :order => :distance).paginate :page => params[:page]
+      @volunteers = Volunteer.can_keep_dogs(params['can_keep_dogs']).hours_at_home(params['hours_at_home']).find(:all, :origin => "#{params['address']}, australia", :within => params['within'], :order => :distance).paginate :page => params[:page]
     end
     respond_to do |format|
       format.html # index.html.erb
