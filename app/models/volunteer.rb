@@ -1,6 +1,6 @@
 require 'fastercsv'
 class Volunteer < ActiveRecord::Base
-  acts_as_mappable
+  acts_as_mappable :default_units => :kms
   validates_presence_of :first_name, :last_name
   wraps_attribute :email_address, EmailAddress
   validates_presence_of :address_1, :suburb
@@ -55,9 +55,9 @@ class Volunteer < ActiveRecord::Base
   end
   
   private
-  def geocode_address
-    geo=Geokit::Geocoders::MultiGeocoder.geocode(address)
-    # errors.add(:address, "Could not Geocode address") if !geo.success
-    self.lat, self.lng = geo.lat,geo.lng if geo.success
-  end
+    def geocode_address
+      geo=Geokit::Geocoders::MultiGeocoder.geocode(address)
+      # errors.add(:address, "Could not Geocode address") if !geo.success
+      self.lat, self.lng = geo.lat,geo.lng if geo.success
+    end
 end
