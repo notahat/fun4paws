@@ -1,8 +1,16 @@
 # Don't cause the server to break if Passenger module not loaded
 <IfModule passenger_module>
 	<VirtualHost *:80>
-	  ServerName relief.fun4paws.org
-	  DocumentRoot "/opt/apps/fun4paws/current/public"
+	  ServerName ls.goodfordogs.org
+        ServerAlias assets0.goodfordogs.org
+        ServerAlias assets1.goodfordogs.org
+        ServerAlias assets2.goodfordogs.org
+        ServerAlias assets3.goodfordogs.org
+
+	  DocumentRoot "/opt/apps/ls/current/public"
+	  CustomLog /opt/apps/ls/shared/log/access.log combined
+	  ErrorLog /opt/apps/ls/shared/log/error.log
+	  
 	  RailsEnv production
 	  # RailsAllowModRewrite off
 	  #
@@ -12,7 +20,7 @@
 	  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
 	  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
       RewriteRule ^.*$ /system/maintenance.html [L]
-	  <Directory "/opt/apps/fun4paws/current/public">
+	  <Directory "/opt/apps/ls/current/public">
 	    Order allow,deny
 	    Allow from all
 	  </Directory>

@@ -1,12 +1,12 @@
 require 'deprec'
   
-set :application, "fun4paws"
-set :domain, "relief.fun4paws.org"
+set :application, "ls"
+set :domain, "ls.goodfordogs.org"
 set :repository,  "git://github.com/notahat/fun4paws.git"
-
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
+set :branch, "master"
 set :scm, :git
+
+set :gateway, 'x1.failmode.com'
    
 set :ruby_vm_type,      :ree
 set :web_server_type,   :apache
@@ -20,16 +20,12 @@ set :shared_dirs, 'system'
 set :gems_for_project, %w(fastercsv will_paginate) # list of gems to be installed
 
 # Update these if you're not running everything on one host.
-role :app, domain
-role :web, domain
-role :db,  domain, :primary => true
+role :app, 'ls.failmode.com'
+role :web, 'ls.failmode.com'
+role :db,  'db.failmode.com', :primary => true
 
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     top.deprec.app.restart
   end
-end
-
-task :ff do
-  puts application
 end
